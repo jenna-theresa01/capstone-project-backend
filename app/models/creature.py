@@ -5,7 +5,7 @@ from app.schemas import UserInDB
 from app.db.base_class import Base
 
 class Creature(Base): 
-    __tablename__ = "Creatures"
+    __tablename__ = "creatures"
 
     id: Column(Integer, primary_key=True, index=True)
     name: Column(String, index=True, default="Name")
