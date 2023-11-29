@@ -10,10 +10,13 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
+    age = Column(Integer, nullable=False)
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
     relationship()
+
+    # where does the relationship between the users table and the user_caught_creatures table belong?
 
     def to_schema(self):
         return UserInDB(
