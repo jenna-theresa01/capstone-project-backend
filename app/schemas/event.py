@@ -2,6 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, EmailStr
 
-class CreatureTypeSchema(BaseModel):
+class EventSchema(BaseModel):
     id: int
     name: str
+    date: str

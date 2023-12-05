@@ -1,8 +1,12 @@
+from typing import List
+
 from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from app.schemas import UserInDB
 
 from app.db.base_class import Base
+# from app.models.hemisphere import Hemisphere
+
 
 class Creature(Base): 
     __tablename__ = "creatures"
@@ -17,3 +21,4 @@ class Creature(Base):
     creature_type_id: Mapped[int] = Column(Integer, ForeignKey("creature_types.id"))
 
     # I need to establish a relationship between this table and the tables for my foreign keys (locations, hemisphere, and creature_types)
+    hemisphere: Mapped[List["Hemisphere"]] = relationship(back_populates="creature")
