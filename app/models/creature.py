@@ -19,7 +19,7 @@ class Creature(Base):
     creature_type_id: Mapped[int] = Column(Integer, ForeignKey("creature_types.id"))
 
     # I need to establish a relationship between this table and the tables for my foreign keys (locations, hemisphere, and creature_types)
-    hemispheres: Mapped[List["Hemisphere"]] = relationship(back_populates="creature")
-    locations: Mapped[List["Location"]] = relationship(back_populates="creature")
-    creature_type: Mapped["CreatureType"] = relationship(back_populates="creature")
-    catches: Mapped["UserCaught"] = relationship(back_populates="creature")
+    hemisphere = relationship("Hemisphere", back_populates="creatures")
+    location = relationship("Location",back_populates="creatures")
+    creature_type = relationship("CreatureType", back_populates="creature")
+    catches = relationship("UserCaughtCreature", back_populates="creature")

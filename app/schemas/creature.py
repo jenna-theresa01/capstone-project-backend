@@ -1,6 +1,10 @@
 from typing import Optional
 
 from pydantic import BaseModel
+from app.schemas.creature_type import CreatureTypeSchema
+from app.schemas.hemisphere import HemisphereSchema
+
+from app.schemas.location import LocationSchema
 
 # Shared properties
 class CreatureBase(BaseModel):
@@ -28,7 +32,9 @@ class CreatureInDBBase(CreatureBase):
 
 # additional properties to return via API
 class CreatureSchema(CreatureInDBBase):
-    pass
+    location: LocationSchema
+    hemisphere: HemisphereSchema
+    creature_type: CreatureTypeSchema
     
 
 # what I need here: CreatureInDBBase, CreatureBase, CreatureInDB, CreatureCreate, CreatureUpdate

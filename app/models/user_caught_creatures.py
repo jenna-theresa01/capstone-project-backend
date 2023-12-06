@@ -14,7 +14,7 @@ class UserCaughtCreature(Base):
     user_caught_id: Mapped[int] = Column(Integer, ForeignKey("users.id"))
 
     # need to establish the relationship between creature_id and creatures.id
-    creature: Mapped[List["Creature"]] = relationship(back_populates="catches")
+    creature = relationship("Creature", back_populates="catches")
 
     # need to establish the relationship between user_caught_id and users.id
-    user: Mapped[List["User"]] = relationship(back_populates="caught_creatures")
+    user = relationship("User", back_populates="caught_creatures")

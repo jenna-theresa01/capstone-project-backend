@@ -13,4 +13,4 @@ class Location(Base):
     name: Mapped[str] = Column(String, default="Name")
 
     # how do I establish the relationship between this table and the creates table
-    creature: Mapped[List["Creature"]] = relationship(back_populates="locations")
+    creatures = relationship("Creature", back_populates="location")

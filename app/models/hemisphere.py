@@ -14,7 +14,5 @@ class Hemisphere(Base):
     name: Mapped[str] = Column(String, default="Name")
     month: Mapped[str] = Column(String, default="Month")
     time_of_day: Mapped[str] = Column(String, default="Time of Day")
-    creature_id: Mapped[int] = Column(Integer, ForeignKey("creatures.id"))
-
     # how do I establish a relationship between this table and the creatures table
-    creature: Mapped[List["Creature"]] = relationship(back_populates="hemispheres")
+    creatures: Mapped[List["Creature"]] = relationship("Creature", back_populates="hemisphere")

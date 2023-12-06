@@ -13,4 +13,4 @@ class CreatureType(Base):
     name: Mapped[str] = Column(String, default="Name")
 
     # how do I establish the connection between the creature table and the creature type table 
-    creature: Mapped[List["Creature"]] = relationship(back_populates="creature_type")
+    creature = relationship("Creature", back_populates="creature_type")
