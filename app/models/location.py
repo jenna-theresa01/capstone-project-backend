@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from app.schemas import UserInDB
@@ -11,3 +13,4 @@ class Location(Base):
     name: Mapped[str] = Column(String, default="Name")
 
     # how do I establish the relationship between this table and the creates table
+    creature: Mapped[List["Creature"]] = relationship(back_populates="locations")

@@ -18,17 +18,17 @@ SHELL ["/bin/bash", "-c"]
 RUN useradd -m -d /var/lib/postgresql postgres_user && chown -R postgres_user:postgres_user /var/lib/postgresql
 USER postgres_user
 # Initialize the PostgreSQL database
-RUN PGDATA="${PGDATA//\/workspace/$HOME}" \
- && mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/sockets $PGDATA \
- && initdb -D $PGDATA \
- && printf '#!/bin/bash\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" start\n' > ~/.pg_ctl/bin/pg_start \
- && printf '#!/bin/bash\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" stop\n' > ~/.pg_ctl/bin/pg_stop \
- && chmod +x ~/.pg_ctl/bin /*
+# RUN PGDATA="${PGDATA//\/workspace/$HOME}" \
+#  && mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/sockets $PGDATA \
+#  && initdb -D $PGDATA \
+#  && printf '#!/bin/bash\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" start\n' > ~/.pg_ctl/bin/pg_start \
+#  && printf '#!/bin/bash\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" stop\n' > ~/.pg_ctl/bin/pg_stop \
+#  && chmod +x ~/.pg_ctl/bin /*
 # Switch back to the root user
 USER root
 ENV PATH="$HOME/.pg_ctl/bin:$PATH"
 ENV DATABASE_URL="postgresql://postgres@localhost"
-ENV PGHOSTADDR="localhost"
+ENV PGHOSTADDR=""
 ENV PGDATABASE="postgres"
 # Switch to the user gitpod and copy a script
 # USER gitpod
