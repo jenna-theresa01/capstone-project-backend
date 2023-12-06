@@ -14,12 +14,12 @@ from app.core import security
 
 router = APIRouter()
 
-@router.get("/", response_model=List[schemas.CreatureSchema])
+@router.get("/creatures", response_model=List[schemas.CreatureSchema])
 def read_creatures(
     db: Session = Depends(deps.get_db),
     skip: int = 0,
     limit: int = 100,
-    current_user: models.User = Depends(deps.get_current_active_superuser),
+    # current_creature: models.Creature = Depends(deps.get_current_creature),
 ) -> Any:
     """
     Retrieve Creatures.

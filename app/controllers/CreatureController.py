@@ -22,3 +22,5 @@ class CreatureController(BaseController[Creature, CreatureCreate, CreatureUpdate
         db.commit()
         db.refresh(db_obj)
         return db_obj
+    
+    
