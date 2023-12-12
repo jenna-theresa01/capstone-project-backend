@@ -15,6 +15,10 @@ class UserCaughtCreature(Base):
 
     # need to establish the relationship between creature_id and creatures.id
     creature = relationship("Creature", back_populates="catches")
+    #* child table relationship 1
+    #? one creature gets caught many times
 
     # need to establish the relationship between user_caught_id and users.id
     user = relationship("User", back_populates="caught_creatures")
+    #* child table relationship 2
+    #? a user has many caught creatures

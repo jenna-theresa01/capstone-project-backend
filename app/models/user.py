@@ -20,6 +20,9 @@ class User(Base):
 
     # where does the relationship between the users table and the user_caught_creatures table belong?
     caught_creatures = relationship("UserCaughtCreature", back_populates="user")
+    #* parent table
+    #? many caught creatures to a user
+
 
     def to_schema(self):
         return UserInDB(

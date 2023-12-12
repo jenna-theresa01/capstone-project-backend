@@ -22,4 +22,8 @@ class Creature(Base):
     hemisphere = relationship("Hemisphere", back_populates="creatures")
     location = relationship("Location",back_populates="creatures")
     creature_type = relationship("CreatureType", back_populates="creature")
+    
     catches = relationship("UserCaughtCreature", back_populates="creature")
+    #* parent table
+    #? many catches to one creature
+    #? "a user can catch a creature multiple times"
