@@ -5,6 +5,8 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from app.schemas import UserInDB
 
 from app.db.base_class import Base
+# from app.models.hemisphere import Hemisphere
+
 
 class Creature(Base): 
     __tablename__ = "creatures"
